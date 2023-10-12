@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search Today</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    display: flex;
+    overflow-x: hidden;
+  }
+/* Non-responsive styles for #left-side and its child image */
+#left-side {
+    width: 20%;
+    background-color: rgb(109, 194, 240);
+    background-image: url('tower 9.png');
+    background-size: cover;
+    background-position: center;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    /* border-bottom-left-radius: 20px; */
+}
+
+#left-side img {
+    width: 20%;
+    background-color: #da2929;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+#center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    #left-side {
+        width: 50%; /* Occupy the full width on small screens */
+    }
+
+    #left-side img {
+        width: 50%; /* Occupy the full width on small screens */
+        position: relative; /* Return to the normal document flow on small screens */
+        top: auto;
+        bottom: auto;
+        border-radius: 0; /* Remove border-radius on small screens */
+    }
+}
+
+  #right-side {
+    width: 80%;
+    padding: 20px;
+
+  }
+  .rounded-card {
+    border-radius: 20px;
+    background-color: lightblue;
+    /* padding: 20px; */
+  
+    margin-bottom: 20px;
+  }
+  .blue-box {
+    background-color: lightblue;
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 20px;
+  }
+  .square-card {
+    border-radius: 20px;
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    height: 200px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @media (max-width: 768px) {
+    #date-section {
+       /* position: absolute; */
+       /* top: 0; */
+       /* right: 0; */
+      /* left: 10px; */
+      /* padding: 5px; */
+      /* font-size: 16px; */
+ 
+      animation: none; /* Disable animation for smaller screens */
+    }
+  }
+
+  /* Mobile screens */
+  @media (max-width: 480px) {
+    #date-section {
+      left: 1px;
+      padding: 3px;
+      /* font-size: 14px; */
+      /* border-radius: 500px; */
+      /* width:50px; */
+      
+    }
+  }
+
+  /* Add animations back for larger screens */
+  @media (min-width: 769px) {
+    #date-section {
+      animation: fadeInOut 2s ease-in-out infinite;
+    }
+  }
+  
+  @keyframes fadeInOut {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  /* #image-below {
+    display: flexbox;
+    margin-top: 600px;
+    margin-left:155px;
+    width: 50%;                           
+    max-width: 150px;              
+    height: auto;                   
+     
+  } */
+
+  body.dark-mode {
+    background-color: #121212;
+    color: white;
+  }
+  body.light-mode {
+    background-color: white;
+    color: black;
+  }
+
+  
+  .square-card {
+    transition: transform 0.2s; /* Define the transition for scaling */
+  }
+
+  .square-card:hover {
+    transform: scale(1.1); /* Apply the scaling on hover */
+  }
+
+
+</style>
+</head>
+<body class="light-mode"> <!-- Set initial mode -->
+
+ 
+  <div id="left-side">
+          <!-- <div id="date-section" class="bg-info text-white text-center ">  -->
+            <!-- Apply Bootstrap classes -->
+        <!-- <div id="time-display"class="m-5 p-2"></div> -->
+      </div>
+     
+    <!-- Content for the left card if needed -->
+    <div id="right-side ">
+      <!-- Your content for the right side here -->
+
+    </div>
+  
+    </div>
+  
+   
+  </div>
+  <!-- <img id="image-below" src="tower 5 bg.png" alt="Image Below Left Div"> -->
+  </div>  
+  
+
+  <div id="right-side">
+    <div class="row justify-content-center ">
+      <div class="rounded-card p-3 w-100">
+        <div class="d-flex justify-content-between align-items-center ">
+            <h2 class="font-weight-bold ml-5 ">SEARCH today</h2>
+            <div id="date-section" class="text-white text-center">
+                <div id="time-display" class="p-2 mr-5 fw-bold text-dark bg-info rounded"></div>
+            </div>
+        </div>
+    </div>
+    
+  </div>
+  
+    
+    <div class="blue-box">
+      <div class="row">
+        
+      </div>
+      
+      <div class="row">
+        <div class="col-md-4">
+          <div class="square-card">
+            <div class=" d-flex justify-content-end align-items-center">
+                <h5 class="  text-success">Humidity</h5>
+            </div>
+            <div class="card-body">
+                <div class="big-humidity mt-4">
+                    <h1 class="percentage border p-4 border-primary rounded" id="humidityPercentage">--</h1>
+                </div>
+                <p class="indicator ">Loading...</p>
+            </div>
+        </div>
+        
+        </div>
+        <div class="col-md-4">
+          <div class="square-card">
+       <!-- Card content here -->
+            <div class=" d-flex justify-content-end align-items-center">
+              <h5 class="mr-auto text-success">Wind</h5>
+            </div>
+            <div class="card-body mt-4">
+              
+              <p class="wind-measurement border p-4 border-primary rounded" id="windMeasurement">-- cm</p>
+              <p class="wind-description indicator" id="windDescription">Loading...</p>
+            </div>
+           
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="square-card">
+            <!-- Card content here -->
+            <div class=" d-flex justify-content-end align-items-center">
+              <h5 class=" text-success ">Precipitation</h5>
+            </div>
+            <div class="card-body mt-4">
+              <p class="precipitation-measurement border p-4 border-primary rounded" id="precipitationMeasurement">-- cm</p>
+              <p class="precipitation-description indicator" id="precipitationDescription">Loading...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="square-card">
+             <!-- Blank card content here -->
+            <div class=" d-flex justify-content-end align-items-center">
+              <h5 class=" text-success">UV Index</h5>
+            </div>
+            <div class="card-body mt-4">
+              <p class="uv-index border p-4 border-primary rounded" id="uvIndex">--</p>
+              <p class="uv-label indicator" id="uvLabel">Loading...</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="square-card">
+            <!-- Blank card content here -->
+            <div class=" d-flex justify-content-end align-items-center">
+              <h5 class=" text-success">Feels Like</h5>
+            </div>
+            <div class="card-body mt-4">
+              <p class="feels-like-temp border p-4 border-primary rounded" id="feelsLikeTemp">--°C</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="square-card">
+            <!-- Blank card content here -->
+
+            <div class=" d-flex justify-content-end align-items-center">
+              <h5 class="mr-auto text-success">Chance of Rain</h5>
+            </div>
+            <div class="card-body mt-4 ">
+              <p class="rain-chance border p-4 border-primary rounded" id="rainChance">--%</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="blue-box">
+
+      <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="date">Date: Loading...</span>
+                    </div>
+                    <div class="card-body">
+
+                        <p class="wind-measurement">Wind Speed: <span id="wind-speed-previous">Loading...</span></p>
+                        <p class="temperature-measurement">Temperature: <span id="temperature-previous">Loading...</span></p>
+                        <p class="humidity-measurement">Humidity: <span id="humidity">Loading...</span></p>
+
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="date">Date: Loading...</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="wind-measurement">Wind Speed: <span id="wind-speed-previous">Loading...</span></p>
+                        <p class="temperature-measurement">Temperature: <span id="temperature-previous">Loading...</span></p>
+                        <p class="humidity-measurement">Humidity: <span id="humidity">Loading...</span></p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="date">Date: Loading...</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="wind-measurement">Wind Speed: <span id="wind-speed-previous">Loading...</span></p>
+                        <p class="temperature-measurement">Temperature: <span id="temperature-previous">Loading...</span></p>
+                        <p class="humidity-measurement">Humidity: <span id="humidity">Loading...</span></p>
+
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="date">Date: Loading...</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="wind-measurement">Wind Speed: <span id="wind-speed-previous">Loading...</span></p>
+                        <p class="temperature-measurement">Temperature: <span id="temperature-previous">Loading...</span></p>
+                        <p class="humidity-measurement">Humidity: <span id="humidity">Loading...</span></p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="date">Date: Loading...</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="wind-measurement">Wind Speed: <span id="wind-speed-previous">Loading...</span></p>
+                        <p class="temperature-measurement">Temperature: <span id="temperature-previous">Loading...</span></p>
+                        <p class="humidity-measurement">Humidity: <span id="humidity">Loading...</span></p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="date">Date: Loading...</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="wind-measurement">Wind Speed: <span id="wind-speed-previous">Loading...</span></p>
+                        <p class="temperature-measurement">Temperature: <span id="temperature-previous">Loading...</span></p>
+                        <p class="humidity-measurement">Humidity: <span id="humidity">Loading...</span></p>
+
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+    
+    </div>
+    <div class=" text-center">
+      <p>Center for System Design</p>
+    </div>
+     <div class=" text-center">
+      <h6>NITK</h6>
+     </div>
+    
+  </div>
+
+ 
+  <script src="script2.js"></script>
+</body>
+</html>
